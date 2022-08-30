@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+https://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/mvc
+https://www.springframework.org/schema/mvc/spring-mvc.xsd" >
+
+<!-- beans : mvc를 사용하도록 적용. (mvc 태그를 사용하기 위함) xmlns:mvc ,,  
+xmlns:mvc="http://www.springframework.org/schema/mvc"
+http://www.springframework.org/schema/mvc
+https://www.springframework.org/schema/mvc/spring-mvc.xsd"
+
+beans?
+정적 파일 서비스를 하기 위해서 사용합니다 (기본은 정적파일 서비스를 사용하지 못함)
+bean : control + view 만 움직임..mvc를 넣어줘야 그림 등 사용가능!
+-->
+
+
+
+
+<!-- servlet - index.java 연결, servlet 컨트롤부분 -->
+
+<!--  /admin/ : 가상의 디렉토리명 (controller 는 가상의 디렉토리로 움직이게 됨)-->
+
+<!-- <bean id="/admin/index.do" class="test1.index">  -->
+
+
+ <bean id="/index" class="test1.index"></bean>
+ <bean id="/main" class="test1.main"></bean>
+  <bean id="/postok.do" class="test1.postok"></bean>
+
+
+<!-- controller 와 jsp 이름을 동일화 시키는 작업 입니다. -->
+
+<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+<property name="prefix" value="/WEB-INF/view/"></property>
+<property name="suffix" value=".jsp"></property>
+</bean>
+
+<!-- http://localhost:8080/test1/resource/img.jpg -->
+
+
+<!-- HTML 출력파트 정적파일 서비스 (HTML, JS, Jquery, CSS, IMAGE) -->
+
+<mvc:resources location="/" mapping="/**"></mvc:resources> 
+
+
+<!-- <mvc:resources location="/resource" mapping="/**"></mvc:resources> -->
+<!-- webapp에 있는 파일 모두 작동 -->
+<!-- <mvc:resources location="/html" mapping="/**"></mvc:resources>   
+특정 페이지만 로드..
+정해진 디렉토리에 정해진 뷰 부분만 정확하게 작동시킬 수 있음. <bean>설정...</bean>
+-->
+
+
+<!-- http://localhost:8080/resource/img.jpg -->
+
+</beans>
+
+
+<!-- spring framework : 관리가 수월하며, 규칙적인 코드 형태가 이뤄질 수 있음 , xml 만으로도 매핑되어있는 라이브러리 및 파일 확인 가능 -->
+
+
+
+
+
+
