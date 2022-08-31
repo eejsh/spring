@@ -9,6 +9,52 @@
         >
 
   <bean id="/main.do" class="test2.main"> </bean>
+  <bean id="/admin/login.do" class="test2.admin.login"> </bean>
+  
+  <bean id="/admin/main_control.do" class="test2.admin.main_control"> </bean>
+  <bean id="/admin/main.do" class="test2.admin.main"> </bean>
+  
+  
+   <bean id="/menu.do" class="test2.menu"> </bean>
+  
+  
+ <bean id="/contact/contact.do" class="test2.contact.main"> </bean>
+  <bean id="/myinfo/myinfo.do" class="test2.myinfo.main"> </bean>
+   <bean id="/qa/qalist.do" class="test2.qa.main"> </bean>
+  
+  <!-- tiles 라이브러리 로드 -->
+  
+  <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+  <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"></property>
+  <property name="order" value="1"></property>  
+  
+  <!-- order : 1번으로 작동 후 상관없으면 다음 resolver 실행.. order 없을 시 밑 resolver까지 작동 안됨!
+  order 1-> order 2 -> order 3... 식으로 내려감
+  
+   
+  order를 이용해서 우선순위를 정하게 됩니다. 
+  order를 사용하지 않고 형태가 비슷한 class를 사용할 경우 아래에 있는 class는 사용하지 않게 됩니다.
+  property : 객체지향 언어(읽기, 쓰기 메소드를 호출합니다.) - 파일 디렉토리, order(기준점)
+  
+  -->
+  </bean>
+  
+  <bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+  <property name="definitions" value="/WEB-INF/tiles.xml"></property>
+  </bean>
+  <!-- 여기까지 세팅하면 에러 메세지뜸 : 근본 원인 (root cause)
+	java.lang.NoClassDefFoundError: javax/servlet/jsp/jstl/core/Config 
+	jstl 가져와...ㅠ  -->
+  
+  
+  
+  <!-- ㅇㅇ -->
+  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+  <property name="prefix" value="/WEB-INF/view/"></property>
+  <property name="suffix" value=".jsp"></property>
+  </bean>
+
+
 
  <mvc:resources location="/" mapping="/**"></mvc:resources>
 

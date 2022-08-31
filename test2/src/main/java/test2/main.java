@@ -23,7 +23,7 @@ public class main implements Controller{
 	
 	ModelAndView mv = new ModelAndView();
 	mv.addObject("sum",c);
-	mv.setViewName("WEB-INF/viewer/main.jsp");
+	//mv.setViewName("WEB-INF/view/main.jsp");
 		return mv;
 	}
 	
