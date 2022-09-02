@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- beans가 기본이 아니고 mvc가 기본이며 해당 태그를 사용하기 위해서 사용함 -->
+<beans:beans 
+	xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context-4.3.xsd">
+        
+            
+        
+        <!-- 기본 공통적인 부분을 적용시킴 (mapping)-->
+       <annotation-driven></annotation-driven>
+        <default-servlet-handler/><!-- servlet class를 전반적으로 핸들링하도록 한다라는 지시어 -->
+        
+		<!-- class에서 해당 jsp로 자동연결 되도록 하는 설정 태그 -->
+	<view-resolvers>
+      <jsp prefix = "/WEB-INF/" suffix=".jsp"></jsp>
+        </view-resolvers>
+       
+ <!--  <jsp prefix = "/WEB-INF/*" suffix=".jsp"></jsp> 	: 모든 디렉토리 설정.. --> 
+       
+            
+        <!-- Controller 이름을 정해 주셔야 합니다. -->
+        
+     <!-- 매핑방식1,, 10개 넘어가면 새 매핑추가함..
+         <beans:bean class ="test3.getinfo"></beans:bean>
+        <beans:bean class ="test3.t1"></beans:bean>
+      -->
+      
+
+     <!-- 
+       <beans:bean class ="test3.api"></beans:bean>
+      -->  
+
+        <beans:bean class ="test3.upload"></beans:bean>
+
+		  <beans:bean class ="test3.dbquerys"></beans:bean>
+		 
+	        
+<!-- 외부api 사용시 닫아야됨  -->
+<!--  <context:component-scan base-package="test3"></context:component-scan>  -->
+
+<!--component-sacn : test3 안에 있는거 모두 사용! 모든 컨트롤 사용시.. -->
+        
+        
+    </beans:beans>

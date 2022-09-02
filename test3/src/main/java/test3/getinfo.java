@@ -1,51 +1,34 @@
 package test3;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller // controller임을 알려주는 표시파일
-@RequestMapping("/getinfo")
 
 public class getinfo{
-
+	//url 에 method를 연결시켜주는 어노테이션 입니다.
 	
-	/*
-	 * Mapping 을 사용하는 이유는 컨트롤러를 통합하여 별도의 view가 필요없이 사용할 때 이용하게 됩니다.
-	 * view 1개 + controller 1개 <= 다수의 class 파일들 
-	 * 
-	 * */
-	
-	
-	private String TAG = getinfo.class.getSimpleName();
-	
-	
-	//@GetMapping("/data") // get 형태로 데이터를 받음
-	@RequestMapping(value="./t1", method=RequestMethod.GET)
-	public String test01_get() { 
-	
-		return "getinfo/t1";
+	@RequestMapping("/userinfo")
+	public String abc(Model model) { 
+		//modelandview : 배열 키값이 있는 형태로 저장하는 방식 
+		//model : 서버 메모리에 자료를 저장하는 방식 입니다. (메모리저장소)
+		
+		String user ="홍길동";
+		model.addAttribute("usernm", user);
+	//	return "info";
+		
+		
+		return "view/info2"; 
+		
+		//어드민이라는 디렉토리안에 info2 파일을 매칭..
+//		return "admin.info2";
+	// 디렉토리가 여러개 있으면 /해당 디렉토리명/을 넣어주기->리턴..> 매핑
+		
+		//q	/web-inf/view
+		//mapping.xml에 view-resolver를 설정하지 않을경우 전부 작성해야됨!
+		
+		
 	}
-
-	//@PostMapping("/data2") // post 형태로 데이터를 받음
-	@RequestMapping(value="./t2", method = RequestMethod.POST)
-	public String test02_post() { 
-	
-		return "getinfo/t2";
-	
-	}
-
-	
-//	@Override  // view 에 값을 던저주는 역활
-//	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-//	System.out.println("test");
-//		ModelAndView mv = new ModelAndView();
-//		mv.setViewName("getinfo.jsp");
-//		
-//		return mv;
-//	}
-
 
 }
