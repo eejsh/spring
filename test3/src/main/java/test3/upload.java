@@ -103,20 +103,21 @@ public class upload {
 		String directory = req.getServletContext().getRealPath("");
 		System.out.println(directory);
 		
+		String upload_dd = directory + "upload/";
+		File fe = new File(upload_dd);
 		String filess[] = new String[3];
 		String url = null;
 		
-		File fe = new File(directory);
 		if(!fe.exists()) {
 			fe.mkdir();
 		}
 
 		int w=0;
 		while(w<3) {
-			filess[w] = files[w].getOriginalFilename();
-		 url = directory+filess[w];
-
-		 FileCopyUtils.copy(filess[w].getBytes(), new File(filess[w]));
+		 filess[w] = files[w].getOriginalFilename();
+		 url = upload_dd+filess[w];
+		 String copyfile = upload_dd+filess[w];
+		 FileCopyUtils.copy(filess[w].getBytes(), new File(copyfile));
 			w++;
 		}
 		

@@ -12,9 +12,6 @@
         https://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
 
 <!-- xsd : xml 에 대한 스키마 언어입니다. html 태그와 같은 언어 입니다..  -->
-
-
-
 	<mvc:resources location="/" mapping="/**"></mvc:resources>
 	</beans>
 
