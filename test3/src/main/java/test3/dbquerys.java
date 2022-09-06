@@ -2,12 +2,16 @@ package test3;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import mydb.model_dao;
 
 /*
 Spring Database 연동 종류 형태
@@ -20,14 +24,24 @@ Spring Database 연동 종류 형태
 
 * */
 
+
+
+
 //컨트롤
 @Controller
 public class dbquerys {
 
-	// DI (dependency Injection) web.xml 을 이용해서 기본적으로 잡고있음..
-	// IOC (Inversion of Control) 객체에 따른 의존성 메소드 호출 - bead, xml에 있는 정보를 받아와서 사용
-	// class 로드를 별도 로드 할 필요 없이 xml에 있는 정보를 가져와서 사용. ex)select도 한번 설정 하면 불러와서 사용가능..
-
+	@Autowired // ioc에 등록된 bean에 대한 id 값을 가져와서 사용하는 형태
+	BasicDataSource dataSource; // dbquerys에 db 접속 한번에 가능
+	Connection con = null;
+	PreparedStatement pr = null;
+	
+	
+	
+//	// DI (dependency Injection) web.xml 을 이용해서 기본적으로 잡고있음..
+//	// IOC (Inversion of Control) 객체에 따른 의존성 메소드 호출 - bead, xml에 있는 정보를 받아와서 사용
+//	// class 로드를 별도 로드 할 필요 없이 xml에 있는 정보를 가져와서 사용. ex)select도 한번 설정 하면 불러와서 사용가능..
+//
 //	@Autowired // ioc에 등록된 bean에 대한 id 값을 가져와서 사용하는 형태
 //
 //	BasicDataSource dataSource; // dbquerys에 db 접속 한번에 가능
@@ -128,27 +142,55 @@ public class dbquerys {
 //
 //		return "view/select";
 //	}
-//	
 	
-	
-	//컨트롤 파트 -model_dao(모델)파트에서 데이터가져옴
 	@RequestMapping("/select.do")
-	public String dbselect(Model m) {
+	public String dbselect (Model m) {
+	
+		//DAO를 사용하지 않고, 배열형태로 생성 후 view 에서 jstl로 출력
+	
+		
+		ArrayList<model_dao> list = new ArrayList<>();
+		ArrayList<Map<String, Object>> pso = new ArrayList<Map<String,Object>>();
+		
+	    String sql = null;
 		
 		try {
+		con = dataSource.getConnection();
+//		sql = "select count(*) as cnt from test3";
+		
+		sql = "select * from test3";
+		pr = con.prepareStatement(sql);
+		  
+			ResultSet rs = pr.executeQuery();
+			//DB에 있는 필드값을 map으로 이관하는 형태
+			while(rs.next()) {
 			
-			model_dao modo = new model_dao();
-			ArrayList<model_dao> list2 = modo.getAlllist();
-			m.addAttribute("list2", list2);
-					
+				Map<String, Object> mp = new HashMap<String, Object>();
+				mp.put("midx", rs.getString("midx"));
+				mp.put("mid", rs.getString("mid"));
+				mp.put("mpw", rs.getString("mpw"));
+				mp.put("mnm", rs.getString("mnm"));
+				mp.put("mtel", rs.getString("mtel"));
+				mp.put("mage", rs.getString("mage"));
+				
+				pso.add(mp);  // 모든 데이터를 반복 ▶ arraylist 생성
+				m.addAttribute("pso", pso);  // view 로 전송함s
+				
+			}
+			
 		}catch (Exception e) {
-			e.printStackTrace();
+				System.out.println(e.getMessage());
+		}finally {
+			try {
+				if (pr != null)	pr.close();
+				if (con != null) con.close();
+			}catch (Exception ee) {
+					ee.printStackTrace();
+			}
 		}
+	
 		return "view/select";
 		
 	}
 	
-	
-	
-
 }

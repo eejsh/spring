@@ -23,12 +23,15 @@
 	 contextlistener  하나로 상속하는 파라미터 부분
 	 -->
 
+<!-- param-value에서 주석처리.. -->
+<!-- /WEB-INF/dbconnect/dbconnect.xml -->
+<!-- /WEB-INF/fileupload/fileupload.xml -->
+<!-- /WEB-INF/mapping/mapping.xml -->
+
 <init-param>
 <param-name>contextConfigLocation</param-name>
 <param-value>
-/WEB-INF/dbconnect/dbconnect.xml
-/WEB-INF/fileupload/fileupload.xml
-/WEB-INF/mapping/mapping.xml
+/WEB-INF/spring/mapping/root-context.xml
 </param-value>
 </init-param>
 <load-on-startup>1</load-on-startup>
