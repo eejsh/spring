@@ -11,7 +11,7 @@
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
 		<property name="url" value="jdbc:mysql://umj7-009.cafe24.com/eejsh08"></property>
 		<property name="username" value="eejsh08"></property>
-		<property name="password" value="hoho12!@"></property>
+		<property name="password" value=""></property>
 		</bean>
 		
 </beans>
