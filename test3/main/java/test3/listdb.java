@@ -5,11 +5,11 @@ import java.sql.*;
 //db접속
 public class listdb {
 
-	public String dburl = "jdbc:mysql://umj7-009.cafe24.com/eejsh08";
+	public String dburl = "";
 	public String dbuser = "eejsh08";
-	public String dbpw = "hoho12!@";
+	public String dbpw = "";
 	public Connection con = null;
-	public String dbDriver = "com.mysql.jdbc.Driver";
+	public String dbDriver = "";
 	
 	public listdb() {
 
