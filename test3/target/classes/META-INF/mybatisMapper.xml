@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="userDB">
+<!-- 
+<select id="whereid" parameterType="Stirng">
+ select * from #{tablenm} order by #{idx} #{andlimit} 
+ select * from #{tablenm} where #{search}
+</select>
+ -->
+
+<select id ="selectall" resultType="uservo">
+select * from test3;
+</select>
+
+<select id="selectid" parameterType="string" resultType="uservo">
+select * from test3 where mid = #{value}
+</select>
+<!-- <![CDATA[>]] 해당 기호없이는 >, < >=. <= 사용불가 -->
+<select id="selectage" parameterType="int" resultType="uservo">
+select * from test3 where mage <![CDATA[>]]> #{value}
+</select>
+<!-- mage < #{value} 사용하면 에러!  -->
+
+
+<!-- resultType이 없음. uservo:getter,setter 파트. -->
+<!-- getter,setter 설정한 변수값 따라가야됨.  -->
+<insert id ="userinsert" parameterType="string">
+insert into test3 values ('0',#{mid},#{mpw},#{mnm},#{mtel},#{mage})
+</insert>
+
+<update id ="userupdate" parameterType="String">
+update test3 set mpw = #{mpw} where mid = #{mid} and mnm= #{mnm}
+</update>
+
+<delete id="userdelete" parameterType="String">
+delete from test3 where mid = #{mid} and mpw= #{mpw} and mnm= #{mnm}
+</delete>
+
+</mapper>
