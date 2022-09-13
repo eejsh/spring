@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  <configuration>
+  	<typeAliases>
+  	<!-- alias: class명 type: package명.class명 -->
+  		<typeAlias alias="dataDAO" type="webpage.dataDAO"/>
+  		<typeAlias alias="apiDAO" type="webpage.movieDAO"/>
+  	</typeAliases>
+  </configuration>
+  
+  <!-- typeAlias 계속적으로 추가 DAO를 추가 하시면 됩니다. 
+  패키지가 달라도 가능 resources 안에 들어가면 class명, 패키지명만 잘 설정하면 됩니다. 단, alias는 절대 중복불가 -->

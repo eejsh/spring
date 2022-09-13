@@ -20,12 +20,17 @@
 		<property name="password" value="hoho12!@"></property>
 		</bean>
 		
+		<!-- mybatis 사용시 사용 -->
 		<!-- sql 매핑 -->
 		<bean id="sqlFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataConnect"/>
-		<property name="configLocation" value="classpath:/MEB-INF/config.xml"></property>
-		<property name="mapperLocations" value="classpath:/MEB-INF/mapper.xml"></property>
+		
+		
+		<property name="configLocation" value="classpath:/MEB_INF/config.xml"></property>
+		<property name="mapperLocations" value="classpath:/MEB_INF/mapper.xml"></property>
 		</bean>
+		
+		<!-- classpath:빌드시 컴파일된 class 파일들의 위치 경로 -->
 		
 		<!-- mapper에서 사용된 태그(select, insert, update, delete)실행 -->
 		<bean id="sqlTemp" class="org.mybatis.spring.SqlSessionTemplate">

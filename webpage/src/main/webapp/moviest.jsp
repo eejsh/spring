@@ -26,11 +26,14 @@
 
 
 <script>
+//movie_abc : key값으로 전달받음. 
 
-var today ="2022-09-08";
+var today ="2022-09-08"; //mysql 저장된 날짜
 var ajax = new XMLHttpRequest();
 ajax.open("GET", "http://localhost:8080/webpage/movie?apikey=movie_abc&apidate=" + today, true);
 ajax.send();
+//front(ajax)는 apikey의 날짜를 파라미터에 적용하여 get으로 전달
+//ajax.open("post") => 405에러 발생
 
 ajax.onreadystatechange = function(){
 	if(ajax.status==200 && ajax.readyState==XMLHttpRequest.DONE){
@@ -43,6 +46,8 @@ ajax.onreadystatechange = function(){
 	html_print(mdata);
 	}
 }
+
+
 function html_print(mdata){
 	console.log(mdata);
 	var pt = document.getElementById("listview");
@@ -69,6 +74,7 @@ function html_print(mdata){
    pt.innerHTML = htmlcode;
    
 }
+
 
 </script>
 </html>

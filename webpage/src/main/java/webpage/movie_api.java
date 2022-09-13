@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
+//리턴있는 api 메소드사용
 @RestController
 public class movie_api {
 //매핑주소는 .do 안붙이는게 좋음, 한글깨짐..ㄴ

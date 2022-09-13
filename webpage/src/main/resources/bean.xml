@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+<!-- bean 처리 시 resources로 처리 시키도록 함..  (bean : Spring ioc 관련사항 DI(의존성주입)형태와 비슷)
+	class를 미리 로드 후 id로 담아서 처리하는 형태 ( aop_class1을 aa로 변환하여 bean id aa로 호출하여 사용. ) 
+※ bean 태그는 개발자가 제어가 불가능한 외부 라이브러리와 같은 프로그램을 제작 또는 로드 하고 싶을 때 사용함.
+
+
+일반class로드.. bean.xml?
+다른 패키지, 다른파일 , 매핑 등 공용으로 사용해야될 경우 bean 파일로 작성하여 로드시키기..
+new class는 로드시킬수없음 import aop.aop_class1...강제로 불러와야됨.
+여러 사람이 한번에 개발하고, 패키지가 다를때 사용함. 
+aop_class1 이 다른 패키지로 이동 하여도 자동으로 변환되어 사용가능함..!
+bean태그이용해서 외부 라이브러리 사용? ㅇㅇ xml에 설정 후 bean.xml 작성 후  class에서 호출 후 사용.
+	-->
+
+<bean id ="aa" class="aop.aop_class1"></bean>
+<!-- <bean id ="zbox" class ="aop.aop_classbox"></bean> -->
+
+<!-- 데이터 의존성 값을 주입하게 됨(setter) -->
+<bean id ="bb" class="aop.aop_class2">
+
+<!-- name : 변수를 선언한 이름과 동일한 이름으로 적용 
+box2가 없으면 null값, 단 java에서 box2가 없으면 에러!
+value : xml에서 값을 해당 setter로 값을 전달
+
+-->
+<property name="box1" value="박스1입니다."></property>
+<property name="box2" value="박스2입니다."></property>
+</bean>
+
+<!-- namespace를 이용하여 의존도 값을 주입하는 방식 
+p:name 약어사용 =  name="name" value="강감찬"
+property는 id, namespace는 name으로 선언.
+
+xmlns:p 를 추가 해야만 정상적으로 p태그 사용가능. -->
+<bean name="cc" class ="aop.aop_class3" p:name="강감찬" p:age="33"/>
+
+</beans>

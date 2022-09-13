@@ -23,5 +23,5 @@
 prefix : view파트 jsp파일 경로
 suffix에 확장자 설정해두면 controller 파트에 확장자 생략 가능 -->
 </view-resolvers>
-<context:component-scan base-package="webpage"></context:component-scan>
+<context:component-scan base-package="webpage,aop"></context:component-scan>
 </beans:beans>
