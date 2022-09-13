@@ -15,8 +15,8 @@
 		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
 		<property name="url" value="jdbc:mysql://umj7-009.cafe24.com/eejsh08"></property>
-		<property name="username" value="eejsh08"></property>
-		<property name="password" value="hoho12!@"></property>
+		<property name="username" value=""></property>
+		<property name="password" value=""></property>
 		</bean>
 		
 		<!--  sql session Factory : sql 전체 실행에 대한 모든 객체를 연결하는 공간 (최고중요사항 ,,, select,insert.. )
