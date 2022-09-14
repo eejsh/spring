@@ -22,8 +22,8 @@ public class aop_info {
 
 	String dbdriver = "com.mysql.jdbc.Driver";
 	String dburl = "jdbc:mysql://umj7-009.cafe24.com/eejsh08";
-	String dbuser = "eejsh08";
-	String dbpw = "hoho12!@";
+	String dbuser = "";
+	String dbpw = "";
 
 	static String url = "";
 	
