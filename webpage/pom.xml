@@ -116,5 +116,17 @@
 </dependency>
 
 
+
+<!--jsp taglib 사용-->
+	<dependency>
+			<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+
+
+
 	</dependencies>
 </project>
